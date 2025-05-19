@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>　ログインページ　</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+   <style>
+ 
+body {
+	background: linear-gradient(to bottom right, #e0f7fa, #ffffff); 
+ 
+}
+
+.center-box {
+  text-align: center;
+}
+    </style>
+  </head>
+
+    <div class="center-box">
+    <h1>ログイン画面へようこそ</h1>
+
+  <title>マイページログイン</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 200px;
+    }
+
+    .login-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;     
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 下に影を落とす */
+  margin: 20px auto;
+       width: 90%;
+    }
+
+    .login-title {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 12px;
+      text-align: center;
+        border-radius: 10px;  
+    }
+
+
+    .form-group {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-group label {
+      width: 100px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      flex: 1;
+      padding: 8px;
+      font-size: 14px;
+    }
+    .links {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: #d00;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    
+    .footer a {
+      text-decoration: underline;
+      color: black;}
+  </style>
+</head>
+<body>
+
+
+  <div class="login-box">
+    <div class="login-title">〇〇株式会社　マイページログイン</div>
+
+    <div class="form-group">
+      <label for="userid">ユーザーID：</label>
+      <input type="text" id="userid" placeholder="ユーザーID">
+    </div>
+
+    <div class="form-group">
+      <label for="password">パスワード：</label>
+      <input type="password" id="password"  placeholder="パスワード">
+    </div>
+
+<button onclick="saveLogin()">ログイン</button>
+<button onclick="showLoginHistory()">履歴を見る</button>   
+
+<ul id="historyList"></ul>
+
+
+  <script>
+  function saveLogin() {
+    const userid = document.getElementById('userid').value;
+    const timestamp = new Date().toLocaleString();
+    const entry = `${timestamp} - ログイン: ${userid}`;
+
+    // ローカルストレージから履歴取得（なければ空配列）
+    let logs = JSON.parse(localStorage.getItem("loginHistory")) || [];
+    logs.push(entry); // 新しい履歴を追加
+
+    // 保存し直す
+    localStorage.setItem("loginHistory", JSON.stringify(logs));
+
+    alert("ログイン履歴に追加しました！");
+  }
+
+  function showLoginHistory() {
+    const logs = JSON.parse(localStorage.getItem("loginHistory")) || [];
+    const list = document.getElementById("historyList");
+    list.innerHTML = ""; // 表示をクリア
+
+    logs.forEach(log => {
+      const li = document.createElement("li");
+      li.textContent = log;
+      list.appendChild(li);
+    });
+  }
+</script>
+
+
+
+    <div class="links">
+       <a href="#">ユーザーIDを忘れた方</a>　
+       <a href="#">パスワードを忘れた方</a>
+    </div>
+  </div>
+
+  
+
+</body>
+</html>
+
+
+
