@@ -234,6 +234,46 @@
 .nav-menu li a.active::after {
   width: 100%;
 }
+ body2 {
+      margin: 0;
+      padding: 40px;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .text-block {
+      text-align: center;
+    }
+
+    .text-block h1 {
+      font-size: 30px;
+      margin: 0;
+    }
+
+    .text-block p {
+      font-size: 10px;
+      margin-top: 6px;
+      line-height: 1.2;
+    }
+
+    .info-list {
+  list-style: none;         /* ●を消す */
+  padding: 0;
+  margin: 20px auto;
+  text-align: center;
+    font-size: 30px;
+
+}
+
 
     </style>
   </head>
@@ -245,26 +285,87 @@
     <img src="C:\Users\terad\Desktop\tmp\my-web-page\fujikyulogo.webp" />
   </div>
 
-
   <!-- 中央：ナビゲーションメニュー -->
   <ul class="nav-menu">
-    <li><a href="#">サービス</a></li>
-    <li><a href="#">業界</a></li>
-    <li><a href="#">会社概要</a></li>
-    <li><a href="#">お問い合わせ</a></li>
+    <li><a href="#" data-i18n="nav-service">サービス</a></li>
+    <li><a href="#" data-i18n="nav-industry">業界</a></li>
+    <li><a href="#" data-i18n="nav-company">会社概要</a></li>
+    <li><a href="#" data-i18n="nav-contact">お問い合わせ</a></li>
   </ul>
+   <!-- 言語切り替えボタン -->
+    <div class="container">
+    <!-- ボタン -->
+    <div class="buttons">
+      <button onclick="setLanguage('ja')">日本語</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
 
-  <!-- 右：言語ボタン -->
-  <div class="lang-buttons">
-    <button>日本語</button>
-    <button>English</button>
+    <!-- テキスト -->
+    <div class="text-block">
+      <h1 data-i18n="welcome">ようこそ！</h1>
+      <p data-i18n="description">これは日本語の説明文 フジ急グループのWebサイトへようこそ。</p>
+    </div>
   </div>
+
+  <script>
+    const translations = {
+      ja: {
+        welcome: "ようこそ！",
+        description: "これは日本語の説明文 フジ急グループのWebサイトへようこそ。",
+      "home-title": "〇〇会社へようこそ",
+    "home-description": "我々はソフトウェア会社です。",
+    "btn-related": "関連記事へ",
+    "btn-login": "マイページログインはこちらから",
+    "nav-service": "サービス",
+    "nav-industry": "業界",
+    "nav-company": "会社概要",
+    "nav-contact": "お問い合わせ",
+    "footer-contact": "お問い合わせ",
+    "footer-policy": "個人情報保護方針",
+    "footer-terms": "利用規約"
+      },
+      en: {
+        welcome: "Welcome!",
+        description: "This is an English description. Welcome to the Fujikyu Group website.",
+         "home-title": "Welcome to Our Company",
+    "home-description": "We are a software company.",
+    "btn-related": "Read Articles",
+    "btn-login": "Login to My Page",
+    "nav-service": "Services",
+    "nav-industry": "Industries",
+    "nav-company": "About Us",
+    "nav-contact": "Contact",
+    "footer-contact": "Contact Us",
+    "footer-policy": "Privacy Policy",
+    "footer-terms": "Terms of Use"
+      }
+    };
+
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translations[lang][key];
+      });
+    }
+  </script>
+
+ 
+
+ 
 </div>
 
+<body>
+
+ 
+</body>
 
   <body>
-    <h1>〇〇会社へようこそ</h1>
-    <p>我々はソフトウェア会社です。</p>
+    <ul class="info-list">
+  <p data-i18n="home-title">〇〇会社へようこそ。</p>
+  <p data-i18n="home-description">我々はソフトウェア会社です。</p>
+     
+     </ul>
     <img
       src="C:\Users\terad\Desktop\tmp\my-web-page\0147_01_main.jpg"
       alt="neusoft"
@@ -287,23 +388,24 @@
 
   <body>
     <ul class="sampleList01">
-      <li>
-        <button id="gotoBtn">関連記事へ</button>
-      </li>
-       <li>
-        　<button id="gotoBtn">マイページログインはこちらから</button>
-      </li>
+      
+        <button id="gotoBtn"a href="new.html" data-i18n="btn-related">関連記事へ</button>
+      
+       
+        　<button id="gotoBtn"a href="new.html" data-i18n="btn-login">マイページログインはこちらから</button>
+      
     </ul>
   </body>
 
   <body>
-    <ul = class ="sampleList01"">
-    <li><a href="new.html"> お問い合わせ</a></li>
-    <ul = class ="sampleList01""> 　
-    <li><a href="new.html"> 利用規約</a></li>
+   <ul class="sampleList01">
+  <li><a href="new.html" data-i18n="footer-contact">お問い合わせ</a></li>
 
-    <ul = class ="sampleList01""> 　
-    <li><a href="new.html"> 個人情報保護方針</a></li>
+  　<li><a href="new.html" data-i18n="footer-terms">利用規約</a></li>
+  
+  　<li><a href="new.html" data-i18n="footer-policy">個人情報保護方針</a></li>
+</ul>
+
   </body>
 
   
