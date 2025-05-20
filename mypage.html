@@ -114,8 +114,9 @@ body {
       <input type="password" id="password"  placeholder="パスワード">
     </div>
 
-<button onclick="saveLogin()">ログイン</button>
-<button onclick="showLoginHistory()">履歴を見る</button>   
+<button onclick="checkLogin()">ログイン</button>
+<!-- 履歴を見るボタン -->
+<button onclick="checkLogin()">履歴を見る</button>
 
 <ul id="historyList"></ul>
 
@@ -126,29 +127,46 @@ body {
     const timestamp = new Date().toLocaleString();
     const entry = `${timestamp} - ログイン: ${userid}`;
 
-    // ローカルストレージから履歴取得（なければ空配列）
     let logs = JSON.parse(localStorage.getItem("loginHistory")) || [];
-    logs.push(entry); // 新しい履歴を追加
-
-    // 保存し直す
+    logs.push(entry);
     localStorage.setItem("loginHistory", JSON.stringify(logs));
 
     alert("ログイン履歴に追加しました！");
   }
 
-  function showLoginHistory() {
-    const logs = JSON.parse(localStorage.getItem("loginHistory")) || [];
-    const list = document.getElementById("historyList");
-    list.innerHTML = ""; // 表示をクリア
+ 
+  const users = [
+    { id: "user1", password: "pass123" },
+    { id: "admin", password: "adminpass" }
+  ];
 
-    logs.forEach(log => {
-      const li = document.createElement("li");
-      li.textContent = log;
-      list.appendChild(li);
-    });
+  function checkLogin() {
+    const userid = document.getElementById("userid").value;
+    const password = document.getElementById("password").value;
+
+    const match = users.find(user => user.id === userid && user.password === password);
+
+    if (!match) {
+      alert("ユーザーIDまたはパスワードが正しくありません。");
+      return;
+    }
+
+    const timestamp = new Date().toLocaleString();
+    const entry = `${timestamp} - ログイン: ${userid}`;
+
+    let logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
+    if (!logs[userid]) logs[userid] = [];
+    logs[userid].push(entry);
+    localStorage.setItem("loginHistory", JSON.stringify(logs));
+
+    localStorage.setItem("loggedInUser", userid);
+
+    alert("ログインに成功しました！");
+    location.href = "history.html";
   }
 </script>
 
+</script>
 
 
     <div class="links">
@@ -161,6 +179,3 @@ body {
 
 </body>
 </html>
-
-
-
