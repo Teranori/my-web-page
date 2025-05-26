@@ -116,54 +116,59 @@ body {
 
 <button onclick="checkLogin()">ログイン</button>
 <!-- 履歴を見るボタン -->
-<button onclick="checkLogin()">履歴を見る</button>
+<button onclick="showLoginHistory()">履歴を見る</button>
 
 <ul id="historyList"></ul>
 
-
   <script>
-  function saveLogin() {
-    const userid = document.getElementById('userid').value;
-    const timestamp = new Date().toLocaleString();
-    const entry = `${timestamp} - ログイン: ${userid}`;
+  function checkLogin() {
+  const userid = document.getElementById("userid").value;
+  const password = document.getElementById("password").value;
 
-    let logs = JSON.parse(localStorage.getItem("loginHistory")) || [];
-    logs.push(entry);
-    localStorage.setItem("loginHistory", JSON.stringify(logs));
-
-    alert("ログイン履歴に追加しました！");
-  }
-
- 
   const users = [
     { id: "user1", password: "pass123" },
     { id: "admin", password: "adminpass" }
   ];
 
-  function checkLogin() {
-    const userid = document.getElementById("userid").value;
-    const password = document.getElementById("password").value;
+  const match = users.find(user => user.id === userid && user.password === password);
 
-    const match = users.find(user => user.id === userid && user.password === password);
-
-    if (!match) {
-      alert("ユーザーIDまたはパスワードが正しくありません。");
-      return;
-    }
-
-    const timestamp = new Date().toLocaleString();
-    const entry = `${timestamp} - ログイン: ${userid}`;
-
-    let logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
-    if (!logs[userid]) logs[userid] = [];
-    logs[userid].push(entry);
-    localStorage.setItem("loginHistory", JSON.stringify(logs));
-
-    localStorage.setItem("loggedInUser", userid);
-
-    alert("ログインに成功しました！");
-    location.href = "history.html";
+  if (!match) {
+    alert("ユーザーIDまたはパスワードが正しくありません。");
+    return;
   }
+
+  // ログイン履歴に追加する処理
+  const timestamp = new Date().toLocaleString();
+  const entry = `${timestamp} - ログイン: ${userid}`;
+  let logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
+  if (!logs[userid]) logs[userid] = [];
+  logs[userid].push(entry);
+  localStorage.setItem("loginHistory", JSON.stringify(logs));
+
+  localStorage.setItem("loggedInUser", userid);
+
+  alert("ログインに成功しました！");
+  // ページ遷移などは任意
+}
+
+function showLoginHistory() {
+  const logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
+  const list = document.getElementById("historyList");
+  list.innerHTML = ""; // いったんクリア
+
+  for (const [userid, entries] of Object.entries(logs)) {
+    const userHeader = document.createElement("li");
+    userHeader.textContent = `ユーザー: ${userid}`;
+    list.appendChild(userHeader);
+
+    entries.forEach(entry => {
+      const li = document.createElement("li");
+      li.textContent = entry;
+      list.appendChild(li);
+    });
+  }
+}
+
 </script>
 
 </script>
