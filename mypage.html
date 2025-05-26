@@ -116,7 +116,7 @@ body {
 
 <button onclick="checkLogin()">ログイン</button>
 <!-- 履歴を見るボタン -->
-<button onclick="showLoginHistory()">履歴を見る</button>
+<button onclick="goToHistoryPage()">履歴を見る</button>
 
 <ul id="historyList"></ul>
 
@@ -137,7 +137,7 @@ body {
     return;
   }
 
-  // ログイン履歴に追加する処理
+  // 履歴保存（ユーザー別）
   const timestamp = new Date().toLocaleString();
   const entry = `${timestamp} - ログイン: ${userid}`;
   let logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
@@ -145,42 +145,45 @@ body {
   logs[userid].push(entry);
   localStorage.setItem("loginHistory", JSON.stringify(logs));
 
+  // ログイン中ユーザーの保存
   localStorage.setItem("loggedInUser", userid);
 
   alert("ログインに成功しました！");
-  // ページ遷移などは任意
 }
 
-function showLoginHistory() {
-  const logs = JSON.parse(localStorage.getItem("loginHistory")) || {};
-  const list = document.getElementById("historyList");
-  list.innerHTML = ""; // いったんクリア
+function goToHistoryPage() {
+  // ページ遷移だけ
+  location.href = "history.html";
+}
+</script>
 
-  for (const [userid, entries] of Object.entries(logs)) {
-    const userHeader = document.createElement("li");
-    userHeader.textContent = `ユーザー: ${userid}`;
-    list.appendChild(userHeader);
+<a href="javascript:void(0)" onclick="openHelpModal()">ユーザーIDを忘れた方</a>
+       
 
-    entries.forEach(entry => {
-      const li = document.createElement("li");
-      li.textContent = entry;
-      list.appendChild(li);
-    });
-  }
+<div id="helpModal" style="display:none; position:fixed; top:20%; left:30%; width:40%; background:white; border:1px solid #ccc; padding:20px; box-shadow:0 0 10px #ccc;">
+  <h3>ユーザーIDの確認方法</h3>
+  <p>ユーザーIDは、ご登録時に送信されたメールに記載されています。
+    メールを確認してください。
+  <button onclick="closeHelpModal()">閉じる</button>
+</div>
+
+<a href="reset_password.html" onclick="openResetModal()">パスワードを忘れた方</a>
+<!-- パスワード再設定モーダル -->
+ 
+
+
+
+
+<script>
+function openHelpModal() {
+  document.getElementById("helpModal").style.display = "block";
 }
 
+function closeHelpModal() {
+  document.getElementById("helpModal").style.display = "none";
+}
 </script>
-
-</script>
-
-
-    <div class="links">
-       <a href="#">ユーザーIDを忘れた方</a>　
-       <a href="#">パスワードを忘れた方</a>
-    </div>
-  </div>
-
-  
+   
 
 </body>
 </html>
