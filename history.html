@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>履歴ページ</title>
-</head>
-<body>
-  <h2>ログイン履歴ページ</h2>
-  <p id="welcome"></p>
- 
+  <head>
+    <meta charset="UTF-8" />
+    <title>履歴ページ</title>
+  </head>
+  <body>
+    <h2>ログイン履歴ページ</h2>
+    <p id="welcome"></p>
 
-  <script>
-    const user = localStorage.getItem('loggedInUser');
+    <script>
+      const user = localStorage.getItem('loggedInUser');
 
-    if (!user) {
-      alert('未ログインです。ログインしてください。');
-      location.href = 'index.html';
-    } else {
-      // ユーザー名の表示
- const now = new Date().toLocaleString(); // 例：2025/05/21 10:45:00
-  // ユーザー名 + 現在時刻を表示
-  document.getElementById('welcome').textContent = `(${now}）`;
-      // ログイン履歴の読み込み（ユーザーごとの履歴）
-      const allLogs = JSON.parse(localStorage.getItem('loginHistory')) || {};
-      const userLogs = allLogs[user] || [];
+      if (!user) {
+        alert('未ログインです。ログインしてください。');
+        location.href = 'index.html';
+      } else {
+        // ユーザー名の表示
+        const now = new Date().toLocaleString(); // 例：2025/05/21 10:45:00
+        // ユーザー名 + 現在時刻を表示
+        document.getElementById('welcome').textContent = `(${now}）`;
+        // ログイン履歴の読み込み（ユーザーごとの履歴）
+        const allLogs = JSON.parse(localStorage.getItem('loginHistory')) || {};
+        const userLogs = allLogs[user] || [];
 
-      const list = document.getElementById('historyList');
-      userLogs.forEach(log => {
-        const li = document.createElement('li');
-        li.textContent = log;
-        list.appendChild(li);
-      });
-    }
-  </script>
-</body>
+        const list = document.getElementById('historyList');
+        userLogs.forEach(log => {
+          const li = document.createElement('li');
+          li.textContent = log;
+          list.appendChild(li);
+        });
+      }
+    </script>
+  </body>
 </html>
