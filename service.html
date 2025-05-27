@@ -130,9 +130,16 @@
   position: relative;
 }
 
+.text-arrow-container {
+  display: flex;             /* 横並びにする */
+  align-items: center;       /* 縦方向中央寄せ */
+  justify-content: center;   /* 必要に応じて中央寄せ */
+  gap: 20px;                 /* 矢印とテキストの間隔 */
+  margin: 20px auto;         /* 上下余白と中央寄せ */
+}
+
 .arrow2 {
- 
-    cursor: pointer;
+  cursor: pointer;
   font-size: 30px;
   color: white;
   background: rgba(0, 0, 0, 0.5);
@@ -141,15 +148,14 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  flex-shrink: 0;      
 }
 
-.text-container {
-   flex: 1;
+.text-content {
+  flex: 1;
   text-align: center;
   font-size: 18px;
-  margin-top: 200px; 
 }
+
 
 .text-slide {
     display: none;
@@ -226,21 +232,21 @@
   setInterval(nextSlide, 3000); // 5秒ごとに切り替え
 </script>
 
-<div class="slider-container">
   <!-- 左矢印 -->
+<div class="text-arrow-container">
   <div class="arrow left" onclick="prevSlide2()">&#10094;</div>
-
   <!-- スライドのテキスト -->
   <div class="text-container">
     <p class="text-slide active">売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】という方も多いのではないでしょうか。</p>
     <p class="text-slide">商品説明の書き方とはどんなふうに書けばいいか…  という方も多いのではないでしょうか。</p>
     <p class="text-slide">売れる商品の紹介文で商品の魅力を伝えることが大切です。</p>
   </div>
+  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
+</div>
 
   <!-- 右矢印 -->
-  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
   
-</div>
+
 
 <div class="pagination">
   <span id="current-page">1</span>/<span id="total-pages">3</span>
