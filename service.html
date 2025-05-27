@@ -85,20 +85,21 @@
   pointer-events: none; /* 矢印以外はクリックできない */
 }
 
+.arrow {
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  transform: translateY(-60%);
+  pointer-events: all; /* 矢印はクリックできるようにする */
+}
 
 
-    .arrow2 {
-      font-size: 40px; /* 矢印の大きさ */
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 70%;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      cursor: pointer;
-      pointer-events: all; /* 矢印だけクリック可能にする */
-    }
 
     .pagination {
       text-align: center;
