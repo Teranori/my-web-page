@@ -223,7 +223,7 @@
 
 <div class="slider-container">
   <!-- 左矢印 -->
-  <div class="arrow left" onclick="prevSlide()">&#10094;</div>
+  <div class="arrow left" onclick="prevSlide2()">&#10094;</div>
 
   <!-- スライドのテキスト -->
   <div class="text-container">
@@ -233,7 +233,7 @@
   </div>
 
   <!-- 右矢印 -->
-  <div class="arrow right" onclick="nextSlide()">&#10095;</div>
+  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
 </div>
 
 <div class="pagination">
@@ -248,19 +248,19 @@ const totalPages = slides2.length;
 
 document.getElementById('total-pages').textContent = totalPages;
 
-function showSlide(index) {
+function showSlide2(index) {
   slides2.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
   document.getElementById('current-page').textContent = index + 1;
 }
 
-function nextSlide() {
+function nextSlide2() {
   currentSlide3 = (currentSlide2 + 1) % totalPages;
   showSlide(currentSlide);
 }
 
-function prevSlide() {
+function prevSlide2() {
   currentSlide3 = (currentSlide2 - 1 + totalPages) % totalPages;
   showSlide(currentSlide3);
 }
