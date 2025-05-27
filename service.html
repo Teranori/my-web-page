@@ -83,7 +83,6 @@
   justify-content: space-between; /* 両端に配置 */
   transform: translateY(-60%); /* 縦中央に配置 */
   pointer-events: none; /* 矢印以外はクリックできない */
-  padding-top:;
 }
 
 .arrow {
@@ -100,28 +99,30 @@
   pointer-events: all; /* 矢印はクリックできるようにする */
 }
 
-  .arrow-container2 {
-      position: absolute;
-      top: 50%; /* 縦中央に */
-      width: 100%; /* 横幅いっぱい */
-      display: flex;
-      justify-content: space-between; /* 両端に配置 */
-      transform: translateY(-50%); /* 縦中央調整 */
-      pointer-events: none; /* 透明にして下の要素に干渉しない */
-    }
+ .arrow-container2 {
+  position: absolute;
+  top: 50%;  /* 画面の縦中央 */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* 両端に配置 */
+  transform: translateY(-50%);    /* 縦方向の中央揃え */
+  pointer-events: none;          /* 中のボタンのみクリック可能に */
+}
 
-    .arrow2 {
-      font-size: 40px; /* 矢印の大きさ */
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 70%;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      cursor: pointer;
-      pointer-events: all; /* 矢印だけクリック可能にする */
-    }
+.arrow-container2 button {
+  pointer-events: all;          /* ボタンだけクリック可能に */
+  font-size: 30px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
 
     .pagination {
       text-align: center;
