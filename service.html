@@ -78,27 +78,25 @@
 
     .arrow-container {
       position: absolute;
-      font-size: 1000;
-      top: 50%;
-      left: 0;
-      width: 50%;
+      top: 50%; /* 縦中央に */
+      width: 100%; /* 横幅いっぱい */
       display: flex;
-      justify-content: space-between; /* ← 両端に配置！ */
-      transform: translateY(-50%);
-      pointer-events: none; /* 中の矢印だけクリック可能にする */
+      justify-content: space-between; /* 両端に配置 */
+      transform: translateY(-50%); /* 縦中央調整 */
+      pointer-events: none; /* 透明にして下の要素に干渉しない */
     }
 
     .arrow {
-      font-size: 80px;
-      /* 矢印の大きさ */
-      color: white; /* 矢印の色（例） */
+      font-size: 40px; /* 矢印の大きさ */
+      color: white;
       background: rgba(0, 0, 0, 0.5);
-      border-radius: 100%;
-      width: 50px; /* 例: 50px */
-      height: 50px; /* 例: 50px */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
       line-height: 50px;
       text-align: center;
       cursor: pointer;
+      pointer-events: all; /* 矢印だけクリック可能にする */
     }
 
     .pagination {
