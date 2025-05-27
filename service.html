@@ -99,14 +99,34 @@
   pointer-events: all; /* 矢印はクリックできるようにする */
 }
 
+  .arrow-container2 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.arrow-container2 button {
+  pointer-events: all;
+  font-size: 30px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.pagination {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
 
-
-    .pagination {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 60px;
-      margin-bottom: 150px;
-    }
 
     .big-text {
       display: none; /* すべて非表示にする */
@@ -216,7 +236,8 @@
 
 
 
-<div class="text-slider">
+<div class="text-slider" style="position: relative;">
+  <!-- テキストスライド -->
   <p class="big-text active">
     売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】
     という方も多いのではないでしょうか。
@@ -224,15 +245,20 @@
   <p class="big-text">
     商品説明の書き方とはどんなふうに書けばいいか…という方も多いのではないでしょうか。
   </p>
-  <p class="big-text">売れる商品の紹介文で商品の魅力を伝えることが大切です。</p>
+  <p class="big-text">
+    売れる商品の紹介文で商品の魅力を伝えることが大切です。
+  </p>
 
+  <!-- 左右矢印 -->
   <div class="arrow-container2">
     <button class="arrow left" onclick="prevSlide2()">&#10094;</button>
     <button class="arrow right" onclick="nextSlide2()">&#10095;</button>
   </div>
-</div>
-<div class="pagination">
-  <span id="current-page">1</span>/<span id="total-pages">3</span>
+
+  <!-- ページネーション -->
+  <div class="pagination">
+    <span id="current-page">1</span>/<span id="total-pages">3</span>
+  </div>
 </div>
 
 <script>
