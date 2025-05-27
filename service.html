@@ -121,7 +121,41 @@
         display: block;         /* activeの時に表示 */
 
     }
-   
+   .caption-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.caption-text-container {
+  flex: 1;
+  text-align: center;
+}
+
+.caption-text {
+  display: none;
+  font-size: 18px;
+}
+
+.caption-text.active {
+  display: block;
+}
+
   </style>
 </head>
 
@@ -181,32 +215,41 @@
   setInterval(nextSlide, 3000); // 5秒ごとに切り替え
 </script>
 
+<div class="caption-container">
+  <div class="arrow" onclick="prevSlide2()">&#10094;</div>
+  
+  <div class="caption-text-container">
+    <p class="caption-text active">売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】という方も多いのではないでしょうか。</p>
+    <p class="caption-text">商品説明の書き方とはどんなふうに書けばいいか… という方も多いのではないでしょうか。</p>
+    <p class="caption-text">売れる商品の紹介文で商品の魅力を伝えることが大切です。</p>
+  </div>
+  
+  <div class="arrow" onclick="nextSlide2()">&#10095;</div>
+</div>
+
 
 
 <script>
-let currentSlide2 = 0;
-const slides2 = document.querySelectorAll('.text-slide');
-const totalPages = slides2.length;
+  let currentCaption = 0;
+  const captions = document.querySelectorAll('.caption-text');
 
-document.getElementById('total-pages').textContent = totalPages;
+  function showCaption(index) {
+    captions.forEach((caption, i) => {
+      caption.classList.toggle('active', i === index);
+    });
+  }
 
+  function nextSlide2() {
+    currentCaption = (currentCaption + 1) % captions.length;
+    showCaption(currentCaption);
+  }
 
-function showSlide2(index) {
-  slides2.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-  });
-  document.getElementById('current-page').textContent = index + 1;
-}
+  function prevSlide2() {
+    currentCaption = (currentCaption - 1 + captions.length) % captions.length;
+    showCaption(currentCaption);
+  }
 
-function nextSlide2() {
-  currentSlide2 = (currentSlide2 + 1) % totalPages;
-  showSlide2(currentSlide2);
-}
+  showCaption(currentCaption); // 初期表示
+</script>
 
-function prevSlide2() {
-  currentSlide2 = (currentSlide2 - 1 + totalPages) % totalPages;
-  showSlide2(currentSlide2);
-}
-
-showSlide2(0);
 </script>
