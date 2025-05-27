@@ -148,25 +148,27 @@
   flex: 1;
   text-align: center;
   font-size: 20px;
+  margin-top: 300px; 
 }
 
 .text-slide {
-  display: none;
-}
-
-.text-slide.active {
-  display: block;
-}
-
-.pagination {
-  text-align: center;
-  margin-top: 10px;
     display: none;
 
 }
 
-    
+.text-slide.active {
+    display: block;
 
+}
+
+
+  .pagination {
+    font-size: 20px;
+    background: #eee;
+    color: black;
+    margin-top: 10px;
+    padding: 5px;
+  }
   </style>
 </head>
 
@@ -199,6 +201,9 @@
   </div>
 </div>
 </div>
+
+ 
+
 
 <script>
   let currentSlide = 0;
@@ -236,6 +241,7 @@
 
   <!-- 右矢印 -->
   <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
+  
 </div>
 
 <div class="pagination">
@@ -243,27 +249,29 @@
 </div>
 
 <script>
-
 let currentSlide2 = 0;
 const slides2 = document.querySelectorAll('.text-slide');
+const totalPages = slides2.length;
+
+document.getElementById('total-pages').textContent = totalPages;
+
 
 function showSlide2(index) {
   slides2.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
+  document.getElementById('current-page').textContent = index + 1;
 }
 
 function nextSlide2() {
-  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  currentSlide2 = (currentSlide2 + 1) % totalPages;
   showSlide2(currentSlide2);
 }
 
 function prevSlide2() {
-  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  currentSlide2 = (currentSlide2 - 1 + totalPages) % totalPages;
   showSlide2(currentSlide2);
 }
 
-
-// 最初のスライド表示
-showSlide2(currentSlide3);
+showSlide2(0);
 </script>

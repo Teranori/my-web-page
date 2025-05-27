@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<style>
+  .text-slide { display: none; }
+  .text-slide.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="arrow left" onclick="prevSlide2()">&#10094;</div>
+
+  <div class="text-container">
+    <p class="text-slide active">スライド 1 のテキストです</p>
+    <p class="text-slide">スライド 2 のテキストです</p>
+    <p class="text-slide">スライド 3 のテキストです</p>
+  </div>
+
+  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
+</div>
+
+
+<script>
+let currentSlide2 = 0;
+const slides2 = document.querySelectorAll('.text-slide');
+const totalPages = slides2.length;
+
+document.getElementById('total-pages').textContent = totalPages;
+
+function showSlide2(index) {
+  slides2.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+  document.getElementById('current-page').textContent = index + 1;
+
+function nextSlide2() {
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  showSlide2(currentSlide2);
+}
+
+function prevSlide2() {
+  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  showSlide2(currentSlide2);
+}
+
+// 最初のスライド表示
+showSlide2(currentSlide3);
+</script>
+
+</body>
+</html>
