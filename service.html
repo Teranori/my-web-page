@@ -78,33 +78,27 @@
   .arrow-container {
   position: absolute;
   top: 50%;
-  left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%); /* 縦中央に */
-  pointer-events: none; /* 親要素のクリック無効化 */
-  top: 30%;
+  justify-content: space-between; /* 両端に配置 */
+  transform: translateY(-50%); /* 縦中央に配置 */
+  pointer-events: none; /* 矢印以外はクリックできない */
 }
 
 .arrow {
-  position: absolute;
-  pointer-events: all; /* 矢印はクリック可能にする */
-  font-size: 40px; /* 大きさはお好みで */
+  cursor: pointer;
+  font-size: 30px;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  width: 50px;  /* 矢印の円のサイズ */
-  height: 50px;
-  line-height: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
-  cursor: pointer;
-      justify-content: space-between; /* 両端に配置 */
-
-
+  pointer-events: all; /* 矢印はクリックできるようにする */
 }
 
-    .arrow-container2 {
+  .arrow-container2 {
       position: absolute;
       top: 50%; /* 縦中央に */
       width: 100%; /* 横幅いっぱい */
