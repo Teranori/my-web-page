@@ -20,8 +20,8 @@
         // ユーザー名 + 現在時刻を表示
         document.getElementById('welcome').textContent = `(${now}）`;
         // ログイン履歴の読み込み（ユーザーごとの履歴）
-        const allLogs = JSON.parse(localStorage.getItem('loginHistory')) || {};
-        const userLogs = allLogs[user] || [];
+        const Logs = JSON.parse(localStorage.getItem('loginHistory')) || {};
+        const userLogs = Logs[user] || [];
 
         const list = document.getElementById('historyList');
         userLogs.forEach(log => {
