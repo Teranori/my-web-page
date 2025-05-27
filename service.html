@@ -257,14 +257,14 @@ function showSlide2(index) {
 
 function nextSlide2() {
   currentSlide3 = (currentSlide2 + 1) % totalPages;
-  showSlide(currentSlide);
+  showSlide2(currentSlide3);
 }
 
 function prevSlide2() {
   currentSlide3 = (currentSlide2 - 1 + totalPages) % totalPages;
-  showSlide(currentSlide3);
+  showSlide2(currentSlide3);
 }
 
 // 最初のスライド表示
-showSlide(currentSlide3);
+showSlide2(currentSlide3);
 </script>
