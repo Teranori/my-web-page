@@ -99,43 +99,7 @@
   pointer-events: all; /* 矢印はクリックできるようにする */
 }
 
-  .text-slider-wrapper {
-  display: flex;              /* 横並び */
-  align-items: center;        /* 縦中央寄せ */
-  justify-content: space-between;
-  width: 100%;
-  position: relative;
-}
-
-.arrow {
-  cursor: pointer;
-  font-size: 30px;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-
-.text-slide-container {
-  flex: 1;                    /* 空いたスペースを埋める */
-  text-align: center;
-  padding: 0 20px;            /* 文字の左右に余白 */
-}
-
-.big-text {
-  display: none;
-  font-size: 20px;
-  white-space: nowrap;        /* テキストを1行にする（必要に応じて） */
-  overflow: hidden;
-  text-overflow: ellipsis;    /* 長すぎる場合に省略記号を付ける */
-}
-
-.big-text.active {
-  display: block;
-}
+  
 
 
 
@@ -253,56 +217,8 @@
 
 
 
-<div class="text-slider-wrapper">
-  <div class="arrow left" onclick="prevSlide2()">&#10094;</div>
-
-  <div class="text-slide-container">
-    <p class="big-text active">
-      売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】という方も多いのではないでしょうか。
-    </p>
-    <p class="big-text">
-      商品説明の書き方とはどんなふうに書けばいいか…という方も多いのではないでしょうか。
-    </p>
-    <p class="big-text">
-      売れる商品の紹介文で商品の魅力を伝えることが大切です。
-    </p>
-  </div>
-
-  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
-</div>
-
-<div class="pagination">
-  <span id="current-page">1</span>/<span id="total-pages">3</span>
-</div>
 
 
-<script>
-  let currentSlide2 = 0;
-  const slides2 = document.querySelectorAll('.big-text');
-  const totalPages = slides2.length;
-
-  document.getElementById('total-pages').textContent = totalPages;
-
-  function showSlide2(index) {
-    slides2.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    document.getElementById('current-page').textContent = index + 1;
-  }
-
-  function nextSlide2() {
-    currentSlide2 = (currentSlide2 + 1) % totalPages;
-    showSlide2(currentSlide2);
-  }
-
-  function prevSlide2() {
-    currentSlide2 = (currentSlide2 - 1 + totalPages) % totalPages;
-    showSlide2(currentSlide2);
-  }
-
-  // 最初のスライドを表示
-  showSlide2(currentSlide2);
-</script>
 
 <div class="section">
   <div class="image"></div>
