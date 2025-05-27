@@ -243,27 +243,24 @@
 <script>
 
 let currentSlide2 = 0;
-const slides2 = document.querySelectorAll('.text-slide');
-const totalPages = slides2.length;
-
-document.getElementById('total-pages').textContent = totalPages;
+const slides2 = document.querySelectorAll('.slide2');
 
 function showSlide2(index) {
   slides2.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
-  document.getElementById('current-page').textContent = index + 1;
 }
 
 function nextSlide2() {
-  currentSlide3 = (currentSlide2 + 1) % totalPages;
-  showSlide2(currentSlide3);
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  showSlide2(currentSlide2);
 }
 
 function prevSlide2() {
-  currentSlide3 = (currentSlide2 - 1 + totalPages) % totalPages;
-  showSlide2(currentSlide3);
+  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  showSlide2(currentSlide2);
 }
+
 
 // 最初のスライド表示
 showSlide2(currentSlide3);
