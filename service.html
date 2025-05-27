@@ -99,18 +99,16 @@
   pointer-events: all; /* 矢印はクリックできるようにする */
 }
 
-  .arrow-container2 {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  display: flex;
+  .text-slider-wrapper {
+  display: flex;              /* 横並び */
+  align-items: center;        /* 縦中央寄せ */
   justify-content: space-between;
-  transform: translateY(-50%);
-  pointer-events: none;
+  width: 100%;
+  position: relative;
 }
-.arrow-container2 button {
-  pointer-events: all;
+
+.arrow {
+  cursor: pointer;
   font-size: 30px;
   color: white;
   background: rgba(0, 0, 0, 0.5);
@@ -119,13 +117,26 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  cursor: pointer;
 }
-.pagination {
+
+.text-slide-container {
+  flex: 1;                    /* 空いたスペースを埋める */
   text-align: center;
-  margin-top: 10px;
-  font-size: 20px;
+  padding: 0 20px;            /* 文字の左右に余白 */
 }
+
+.big-text {
+  display: none;
+  font-size: 20px;
+  white-space: nowrap;        /* テキストを1行にする（必要に応じて） */
+  overflow: hidden;
+  text-overflow: ellipsis;    /* 長すぎる場合に省略記号を付ける */
+}
+
+.big-text.active {
+  display: block;
+}
+
 
 
     .big-text {
@@ -236,30 +247,28 @@
 
 
 
-<div class="text-slider" style="position: relative;">
-  <!-- テキストスライド -->
-  <p class="big-text active">
-    売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】
-    という方も多いのではないでしょうか。
-  </p>
-  <p class="big-text">
-    商品説明の書き方とはどんなふうに書けばいいか…という方も多いのではないでしょうか。
-  </p>
-  <p class="big-text">
-    売れる商品の紹介文で商品の魅力を伝えることが大切です。
-  </p>
+<div class="text-slider-wrapper">
+  <div class="arrow left" onclick="prevSlide2()">&#10094;</div>
 
-  <!-- 左右矢印 -->
-  <div class="arrow-container2">
-    <button class="arrow left" onclick="prevSlide2()">&#10094;</button>
-    <button class="arrow right" onclick="nextSlide2()">&#10095;</button>
+  <div class="text-slide-container">
+    <p class="big-text active">
+      売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】という方も多いのではないでしょうか。
+    </p>
+    <p class="big-text">
+      商品説明の書き方とはどんなふうに書けばいいか…という方も多いのではないでしょうか。
+    </p>
+    <p class="big-text">
+      売れる商品の紹介文で商品の魅力を伝えることが大切です。
+    </p>
   </div>
 
-  <!-- ページネーション -->
-  <div class="pagination">
-    <span id="current-page">1</span>/<span id="total-pages">3</span>
-  </div>
+  <div class="arrow right" onclick="nextSlide2()">&#10095;</div>
 </div>
+
+<div class="pagination">
+  <span id="current-page">1</span>/<span id="total-pages">3</span>
+</div>
+
 
 <script>
   let currentSlide2 = 0;
