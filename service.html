@@ -77,27 +77,28 @@
     }
   .arrow-container {
   position: absolute;
-  top: 50%; /* 縦中央 */
+  top: 50%;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* 両端に配置 */
-  transform: translateY(-50%);
-  pointer-events: none; /* 親要素はクリック不可 */
+  justify-content: space-between;
+  transform: translateY(-50%); /* 縦中央に */
+  pointer-events: none; /* 親要素のクリック無効化 */
 }
 
 .arrow {
-  pointer-events: all; /* クリック可能に */
-  font-size: 40px; /* お好みで調整可 */
+  pointer-events: all; /* 矢印はクリック可能にする */
+  font-size: 40px; /* 大きさはお好みで */
   color: white;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  width: 50px;  /* 矢印の円のサイズ調整 */
+  width: 50px;  /* 矢印の円のサイズ */
   height: 50px;
   line-height: 50px;
   text-align: center;
   cursor: pointer;
 }
+
 
 
 
