@@ -121,8 +121,50 @@
         display: block;         /* activeの時に表示 */
 
     }
+    .slider-container {
+  display: flex;
+  align-items: center;       /* 縦中央に揃える */
+  justify-content: space-between; /* 矢印とテキストを両脇に配置 */
+  width: 100%;
+  max-width: 800px;          /* 必要に応じて調整 */
+  margin: auto;              /* 中央に配置 */
+  position: relative;
+}
+
+.arrow2 {
+  cursor: pointer;
+  font-size: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  z-index: 10;
+}
+
+.text-container {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+}
+
+.text-slide {
+  display: none;
+}
+
+.text-slide.active {
+  display: block;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 10px;
+}
+
     
-    
+
   </style>
 </head>
 
@@ -179,19 +221,50 @@
   setInterval(nextSlide, 3000); // 5秒ごとに切り替え
 </script>
 
+<div class="slider-container">
+  <!-- 左矢印 -->
+  <div class="arrow left" onclick="prevSlide()">&#10094;</div>
 
-
-
-
-
-
-<div class="section">
-  <div class="image"></div>
-  <div class="text">
-    <h1>病院の情報化管理レベルの向上</h1>
-    <p>
-      プラットフォームに金融課題解決能力を加えることで、
-      銀行の情報化を新たな高みに導きます。
-    </p>
+  <!-- スライドのテキスト -->
+  <div class="text-container">
+    <p class="text-slide active">売れる商品説明の書き方とは？魅力を伝えるコツ6つ【例文あり】という方も多いのではないでしょうか。</p>
+    <p class="text-slide">商品説明の書き方とはどんなふうに書けばいいか…という方も多いのではないでしょうか。</p>
+    <p class="text-slide">売れる商品の紹介文で商品の魅力を伝えることが大切です。</p>
   </div>
+
+  <!-- 右矢印 -->
+  <div class="arrow right" onclick="nextSlide()">&#10095;</div>
 </div>
+
+<div class="pagination">
+  <span id="current-page">1</span>/<span id="total-pages">3</span>
+</div>
+
+<script>
+
+let currentSlide2 = 0;
+const slides2 = document.querySelectorAll('.text-slide');
+const totalPages = slides2.length;
+
+document.getElementById('total-pages').textContent = totalPages;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+  document.getElementById('current-page').textContent = index + 1;
+}
+
+function nextSlide() {
+  currentSlide3 = (currentSlide2 + 1) % totalPages;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide3 = (currentSlide2 - 1 + totalPages) % totalPages;
+  showSlide(currentSlide3);
+}
+
+// 最初のスライド表示
+showSlide(currentSlide3);
+</script>
